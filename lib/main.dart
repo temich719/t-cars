@@ -1,91 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t_cars/advertisement.dart';
-
-const String carMockUrl = 'lib/img/testImg.jpg';
-
-List<AdvertisementWidget> ads = [
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-  AdvertisementWidget(
-    name: 'Toyota Camry 2020',
-    price: 25000,
-    description: 'A well-maintained car with low mileage.',
-    carsImages: [
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-      Image.asset(carMockUrl, fit: BoxFit.cover),
-    ],
-  ),
-];
+import 'package:t_cars/filter_button.dart';
 
 void main() {
   runApp(
@@ -107,9 +22,7 @@ void main() {
             backgroundColor: Colors.deepPurple,
             elevation: 4.0,
         ),
-        body: ListView(
-          children: ads,
-        ),
+        body: FilterButton(),
         backgroundColor: Color(0xD1E5A0EF),
         bottomNavigationBar: BottomNavigationBar(
             items: [
