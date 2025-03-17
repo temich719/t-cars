@@ -23,6 +23,7 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
   late int _price;
   late String _description;
   late List<Image> _carsImages;
+  Color _favoriteColor = Colors.grey;
 
   @override
   void initState() {
@@ -31,6 +32,39 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
     _price = widget.price;
     _description = widget.description;
     _carsImages = List.from(widget.carsImages);
+  }
+
+  void _onFavoriteTapped(BuildContext context) {
+    setState(() {
+      _favoriteColor == Colors.grey
+          ? _favoriteColor = Colors.redAccent
+          : _favoriteColor = Colors.grey;
+    });
+    if (_favoriteColor == Colors.redAccent) {
+      final SnackBar snackBar = SnackBar(
+        content: Text(
+          'Added to favorites',
+          style: TextStyle(color: Colors.white),
+        ),
+        action: SnackBarAction(
+          label: 'Undo',
+          textColor: Colors.white,
+          onPressed: () {
+            setState(() {
+              _favoriteColor = Colors.grey;
+            });
+          },
+        ),
+        backgroundColor: Colors.deepPurple,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        behavior: SnackBarBehavior.floating,
+        margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 28.0),
+        duration: Duration(seconds: 3),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   void addImage(Image image) {
@@ -56,6 +90,7 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
       _description = description;
     });
   }
+
   //todo favorites
   @override
   Widget build(BuildContext context) {
@@ -89,9 +124,23 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
             ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
-              _name,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  _name,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite,
+                    size: 25.0,
+                    fill: 0.5,
+                    color: _favoriteColor,
+                  ),
+                  onPressed: () => _onFavoriteTapped(context),
+                ),
+              ],
             ),
           ),
           Padding(
