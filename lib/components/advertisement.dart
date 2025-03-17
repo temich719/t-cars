@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AdvertisementWidget extends StatefulWidget {
-
   final String name;
   final int price;
   final String description;
@@ -20,7 +19,6 @@ class AdvertisementWidget extends StatefulWidget {
 }
 
 class _AdvertisementWidgetState extends State<AdvertisementWidget> {
-
   late String _name;
   late int _price;
   late String _description;
@@ -72,15 +70,21 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
             SizedBox(
               height: 200,
               child: PageView(
-                children: _carsImages.map((image) {
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: image,
-                    ),
-                  );
-                }).toList(),
+                children:
+                    _carsImages.map((image) {
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          10.0,
+                          10.0,
+                          10.0,
+                          0.0,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: image,
+                        ),
+                      );
+                    }).toList(),
               ),
             ),
           Padding(
