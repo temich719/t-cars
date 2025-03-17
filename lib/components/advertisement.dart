@@ -56,7 +56,7 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
       _description = description;
     });
   }
-
+  //todo favorites
   @override
   Widget build(BuildContext context) {
     return Card(
