@@ -52,7 +52,7 @@ class _FilterButtonState extends State<FilterButton> {
               color: Colors.deepPurple,
               borderRadius: BorderRadius.circular(25.0),
             ),
-            duration: Duration(milliseconds: 400),
+            duration: Duration(milliseconds: 350),
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

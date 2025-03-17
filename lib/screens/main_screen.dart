@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:t_cars/components/advertisement.dart';
 import 'package:t_cars/components/filter_button.dart';
+import 'package:t_cars/components/single_car_route.dart';
 
 const String carMockUrl = 'lib/img/testImg.jpg';
 
@@ -40,7 +42,19 @@ class _MainScreenContainerState extends State<MainScreenContainer> {
           controller: _scrollController,
           itemCount: ads.length,
           itemBuilder: (context, index) {
-            return ads[index];
+            return GestureDetector(
+              onTap:
+                  () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => SingleCarRoute(carWidget: ads[index]),
+                      ),
+                    ),
+                  },
+              child: ads[index],
+            );
           },
         ),
         FilterButton(scrollController: _scrollController),
