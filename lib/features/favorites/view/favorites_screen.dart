@@ -5,12 +5,8 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300.0,
-      height: 300.0,
-      child: Center(
-        child: Text('favorites screen'),
-      ),
+    return Center(
+      child: Text('favorites screen'),
     );
   }
 }

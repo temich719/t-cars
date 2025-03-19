@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_cars/theme/purple_theme_extension.dart';
 
 const String defaultBtnText = 'Filters';
 
@@ -12,36 +13,38 @@ class FilterButton extends StatefulWidget {
 }
 
 class _FilterButtonState extends State<FilterButton> {
+  final double btnOffsetStartScale = 200.0;
+
   String _buttonText = defaultBtnText;
   double _btnSize = 110.0;
+
+  void setBtnTextAndSize(final String text, double size) {
+    setState(() {
+      _buttonText = text;
+      _btnSize = size;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > 200) {
-        setState(() {
-          _buttonText = '';
-          _btnSize = 90.0;
-        });
-      } else if (widget.scrollController.offset <= 200) {
-        setState(() {
-          _buttonText = defaultBtnText;
-          _btnSize = 110.0;
-        });
+      if (widget.scrollController.offset > btnOffsetStartScale) {
+        setBtnTextAndSize('', 90.0);
+      } else {
+        setBtnTextAndSize(defaultBtnText, 110.0);
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final PurpleThemeExtension? theme = Theme.of(context).extension<PurpleThemeExtension>();
     return Positioned(
       bottom: 30.0,
       right: 20.0,
       child: GestureDetector(
-        onTap: () {
-          print("filters pressed");
-        },
+        onTap: () => {},//todo
         child: Material(
           elevation: 4.0,
           borderRadius: BorderRadius.circular(25.0),
@@ -49,7 +52,7 @@ class _FilterButtonState extends State<FilterButton> {
             width: _btnSize,
             height: 45.0,
             decoration: BoxDecoration(
-              color: Colors.deepPurple,
+              color: theme?.buttonBorderPurple,
               borderRadius: BorderRadius.circular(25.0),
             ),
             duration: Duration(milliseconds: 350),
@@ -57,9 +60,12 @@ class _FilterButtonState extends State<FilterButton> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.filter_list, color: Colors.white),
+                  Icon(
+                    Icons.filter_list,
+                    color: theme?.defaultIconColor,
+                  ),
                   SizedBox(width: 5.0),
-                  Text(_buttonText, style: TextStyle(color: Colors.white)),
+                  Text(_buttonText, style: TextStyle(color: theme?.whiteText)),
                 ],
               ),
             ),

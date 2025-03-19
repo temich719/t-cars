@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:t_cars/screens/account_screen.dart';
-import 'package:t_cars/screens/favorites_screen.dart';
-import 'package:t_cars/screens/main_screen.dart';
-
-const String appTitle = 'T-Cars';
+import 'package:t_cars/features/account/account.dart';
+import 'package:t_cars/features/cars_list/cars_list.dart';
+import 'package:t_cars/features/favorites/favorites.dart';
+import 'package:t_cars/theme/theme.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -13,9 +12,11 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  final String appTitle = 'T-Cars';
+
   int _currentIndex = 0;
-  final List<Widget> _widgetsBottomBar = [
-    MainScreenContainer(),
+  final List<Widget> _bottomRoutes = [
+    CarsListScreen(),
     FavoritesScreen(),
     AccountScreen(),
   ];
@@ -28,37 +29,24 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          appTitle,
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Colors.deepPurple,
-        elevation: 4.0,
-      ),
-      body: Center(
-        child: _widgetsBottomBar.elementAt(_currentIndex),
-      ), //MainScreenContainer(),
-      backgroundColor: Color(0xD1E5A0EF),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Favorites",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
-        ],
-        backgroundColor: Colors.deepPurple,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        currentIndex: _currentIndex,
-        onTap: onBottomItemTapped,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: purpleTheme,
+      home: Scaffold(
+        appBar: AppBar(title: Text(appTitle)),
+        body: Center(child: _bottomRoutes.elementAt(_currentIndex)),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: "Favorites",
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+          ],
+          currentIndex: _currentIndex,
+          onTap: onBottomItemTapped,
+        ),//todo decompose
       ),
     );
   }
