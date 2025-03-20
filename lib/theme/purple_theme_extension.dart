@@ -20,6 +20,10 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     required this.subtitleWeigh,
     required this.bigTextSize,
     required this.dividerSingleCarColor,
+    this.scaffoldBackgroundColor,
+    this.appBarTheme,
+    this.bottomNavigationBarTheme,
+    required this.blackText,
   });
 
   final Color whiteText;
@@ -37,6 +41,10 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
   final FontWeight subtitleWeigh;
   final double bigTextSize;
   final Color dividerSingleCarColor;
+  final Color? scaffoldBackgroundColor;
+  final AppBarTheme? appBarTheme;
+  final BottomNavigationBarThemeData? bottomNavigationBarTheme;
+  final Color? blackText;
 
   @override
   ThemeExtension<PurpleThemeExtension> copyWith({Color? whiteText, Color? deepPurpleText,
@@ -46,7 +54,9 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     Color? addedFavoriteColor, double? textSize,
     Color? callButtonBackgroundColor, double? smallTextSize,
     FontWeight? subtitleWeigh, double? bigTextSize,
-    Color? dividerSingleCarColor,
+    Color? dividerSingleCarColor, Color? scaffoldBackgroundColor,
+    AppBarTheme? appBarTheme, BottomNavigationBarThemeData? bottomNavigationBarTheme,
+    Color? blackText,
   }) {
     return PurpleThemeExtension(
       whiteText: whiteText ?? this.whiteText,
@@ -64,6 +74,10 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       subtitleWeigh: subtitleWeigh ?? this.subtitleWeigh,
       bigTextSize: bigTextSize ?? this.bigTextSize,
       dividerSingleCarColor: dividerSingleCarColor ?? this.dividerSingleCarColor,
+      scaffoldBackgroundColor: scaffoldBackgroundColor ?? this.scaffoldBackgroundColor,
+      appBarTheme: appBarTheme ?? this.appBarTheme,
+      bottomNavigationBarTheme: bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
+      blackText: blackText ?? this.blackText,
     );
   }
 
@@ -86,6 +100,10 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       subtitleWeigh: FontWeight.lerp(subtitleWeigh, other.subtitleWeigh, t)!,
       bigTextSize: lerpDouble(bigTextSize, other.bigTextSize, t)!,
       dividerSingleCarColor: Color.lerp(dividerSingleCarColor, other.dividerSingleCarColor, t)!,
+      scaffoldBackgroundColor: Color.lerp(scaffoldBackgroundColor, other.scaffoldBackgroundColor, t)!,
+      appBarTheme: AppBarTheme.lerp(appBarTheme, other.appBarTheme, t),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData.lerp(bottomNavigationBarTheme, other.bottomNavigationBarTheme, t),
+      blackText: Color.lerp(blackText, other.blackText, t)!,
     );
   }
 

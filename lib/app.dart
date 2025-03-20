@@ -34,7 +34,7 @@ class _AppState extends State<App> {
       theme: purpleTheme,
       home: Scaffold(
         appBar: AppBar(title: Text(appTitle)),
-        body: Center(child: _bottomRoutes.elementAt(_currentIndex)),
+        body: _bottomRoutes.elementAt(_currentIndex),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
