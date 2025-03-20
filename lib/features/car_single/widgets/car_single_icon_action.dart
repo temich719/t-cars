@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:t_cars/theme/purple_theme_extension.dart';
+import 'package:t_cars/theme/theme_provider.dart';
 
 class CarSingleIconAction extends StatefulWidget {
   const CarSingleIconAction({
@@ -20,15 +22,16 @@ class CarSingleIconAction extends StatefulWidget {
 class _CarSingleIconActionState extends State<CarSingleIconAction> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final PurpleThemeExtension? theme =
-        Theme.of(context).extension<PurpleThemeExtension>();
+        themeProvider.currentTheme.extension<PurpleThemeExtension>();
     return Column(
       children: [
         IconButton(
           icon: Icon(
             widget.actionIcon,
             size: theme?.bigTextSize,
-            color: theme?.whiteText,
+            color: theme?.changeableTextColor,
           ),
           onPressed: widget.onIconPressed,
         ),
@@ -36,7 +39,7 @@ class _CarSingleIconActionState extends State<CarSingleIconAction> {
           widget.text,
           style: TextStyle(
             fontSize: theme?.smallTextSize,
-            color: theme?.whiteText,
+            color: theme?.changeableTextColor,
           ),
         ),
       ],

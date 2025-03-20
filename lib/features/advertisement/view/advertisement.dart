@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:t_cars/features/advertisement/widgets/favorite_icon.dart';
 import 'package:t_cars/features/car_single/widgets/car_images.dart';
 import 'package:t_cars/theme/purple_theme_extension.dart';
+import 'package:t_cars/theme/theme_provider.dart';
 
 class AdvertisementWidget extends StatefulWidget {
   const AdvertisementWidget({
@@ -22,7 +24,6 @@ class AdvertisementWidget extends StatefulWidget {
 }
 
 class _AdvertisementWidgetState extends State<AdvertisementWidget> {
-
   late String _name;
   late int _price;
   late String _description;
@@ -39,11 +40,13 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final PurpleThemeExtension? theme =
-        Theme.of(context).extension<PurpleThemeExtension>();
+        themeProvider.currentTheme.extension<PurpleThemeExtension>();
     return Card(
+      color: theme?.cardColor,
       elevation: 4.0,
-      margin: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 5.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -58,14 +61,17 @@ class _AdvertisementWidgetState extends State<AdvertisementWidget> {
             child: Text(
               '\$$_price',
               style: TextStyle(
-                  fontSize: theme?.textSize,
-                  color: theme?.carPrice
+                fontSize: theme?.textSize,
+                color: theme?.carPrice,
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15.0, 8.0, 0.0, 8.0),
-            child: Text(_description),
+            child: Text(
+              _description,
+              style: TextStyle(color: theme?.changeableTextColor),
+            ),
           ),
         ],
       ),

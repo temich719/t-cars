@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:t_cars/features/advertisement/view/advertisement.dart';
 import 'package:t_cars/features/car_single/widgets/widget.dart';
 import 'package:t_cars/theme/purple_theme_extension.dart';
+import 'package:t_cars/theme/theme_provider.dart';
 
 class CarSingle extends StatefulWidget {
   final AdvertisementWidget advCarWidget;
@@ -15,8 +17,9 @@ class CarSingle extends StatefulWidget {
 class _CarSingleState extends State<CarSingle> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final PurpleThemeExtension? theme =
-        Theme.of(context).extension<PurpleThemeExtension>();
+        themeProvider.currentTheme.extension<PurpleThemeExtension>();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -33,7 +36,15 @@ class _CarSingleState extends State<CarSingle> {
             ),
           ],
         ),
+        backgroundColor: theme?.buttonBorderPurple,
+        elevation: 4.0,
+        titleTextStyle: TextStyle(
+          fontSize: theme?.titleTextSize,
+          fontWeight: theme?.titleWeigh,
+          color: theme?.whiteText,
+        ),
       ),
+      backgroundColor: theme?.scaffoldBackgroundColor,
       body: Padding(
         padding: EdgeInsets.all(5.0),
         child: Stack(

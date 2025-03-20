@@ -24,6 +24,8 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     this.appBarTheme,
     this.bottomNavigationBarTheme,
     required this.blackText,
+    required this.cardColor,
+    this.changeableTextColor,
   });
 
   final Color whiteText;
@@ -45,6 +47,8 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
   final AppBarTheme? appBarTheme;
   final BottomNavigationBarThemeData? bottomNavigationBarTheme;
   final Color? blackText;
+  final Color? cardColor;
+  final Color? changeableTextColor;
 
   @override
   ThemeExtension<PurpleThemeExtension> copyWith({Color? whiteText, Color? deepPurpleText,
@@ -56,7 +60,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     FontWeight? subtitleWeigh, double? bigTextSize,
     Color? dividerSingleCarColor, Color? scaffoldBackgroundColor,
     AppBarTheme? appBarTheme, BottomNavigationBarThemeData? bottomNavigationBarTheme,
-    Color? blackText,
+    Color? blackText, Color? cardColor, Color? changeableTextColor,
   }) {
     return PurpleThemeExtension(
       whiteText: whiteText ?? this.whiteText,
@@ -78,6 +82,8 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       appBarTheme: appBarTheme ?? this.appBarTheme,
       bottomNavigationBarTheme: bottomNavigationBarTheme ?? this.bottomNavigationBarTheme,
       blackText: blackText ?? this.blackText,
+      cardColor: cardColor ?? this.cardColor,
+      changeableTextColor: changeableTextColor ?? this.changeableTextColor,
     );
   }
 
@@ -104,6 +110,8 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       appBarTheme: AppBarTheme.lerp(appBarTheme, other.appBarTheme, t),
       bottomNavigationBarTheme: BottomNavigationBarThemeData.lerp(bottomNavigationBarTheme, other.bottomNavigationBarTheme, t),
       blackText: Color.lerp(blackText, other.blackText, t)!,
+      cardColor: Color.lerp(cardColor, other.cardColor, t)!,
+      changeableTextColor: Color.lerp(changeableTextColor, other.changeableTextColor, t)!,
     );
   }
 

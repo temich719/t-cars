@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:t_cars/theme/purple_theme_extension.dart';
+import 'package:t_cars/theme/theme_provider.dart';
 
 class FavoriteIcon extends StatefulWidget {
   const FavoriteIcon({super.key, required this.name});
@@ -53,8 +55,9 @@ class _FavoriteIconState extends State<FavoriteIcon> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final PurpleThemeExtension? theme =
-        Theme.of(context).extension<PurpleThemeExtension>();
+        themeProvider.currentTheme.extension<PurpleThemeExtension>();
     return Padding(
       padding: const EdgeInsets.fromLTRB(15.0, 8.0, 0.0, 0.0),
       child: Row(
@@ -65,12 +68,13 @@ class _FavoriteIconState extends State<FavoriteIcon> {
             style: TextStyle(
               fontSize: theme?.titleTextSize,
               fontWeight: theme?.titleWeigh,
+              color: theme?.changeableTextColor,
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.favorite,
-              size: 25.0, //todo edges and sizes into common sizes class
+              size: 25.0,
               fill: 0.5,
               color:
                   isActive

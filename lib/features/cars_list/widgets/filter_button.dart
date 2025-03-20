@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:t_cars/theme/purple_theme_extension.dart';
+import 'package:t_cars/theme/theme_provider.dart';
 
 const String defaultBtnText = 'Filters';
 
@@ -39,12 +41,14 @@ class _FilterButtonState extends State<FilterButton> {
 
   @override
   Widget build(BuildContext context) {
-    final PurpleThemeExtension? theme = Theme.of(context).extension<PurpleThemeExtension>();
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final PurpleThemeExtension? theme =
+        themeProvider.currentTheme.extension<PurpleThemeExtension>();
     return Positioned(
       bottom: 30.0,
       right: 20.0,
       child: GestureDetector(
-        onTap: () => {},//todo
+        onTap: () => {}, //todo
         child: Material(
           elevation: 4.0,
           borderRadius: BorderRadius.circular(25.0),
@@ -60,10 +64,7 @@ class _FilterButtonState extends State<FilterButton> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.filter_list,
-                    color: theme?.defaultIconColor,
-                  ),
+                  Icon(Icons.filter_list, color: theme?.defaultIconColor),
                   SizedBox(width: 5.0),
                   Text(_buttonText, style: TextStyle(color: theme?.whiteText)),
                 ],
