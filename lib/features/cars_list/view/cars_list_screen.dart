@@ -44,6 +44,14 @@ class _CarsListScreenState extends State<CarsListScreen> {
     });
   }
 
+  Future<void> _refreshAdsList() async {
+    setState(() {
+      _ads = [];
+      _isLoading = true;
+    });
+    _loadAds();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -63,7 +71,12 @@ class _CarsListScreenState extends State<CarsListScreen> {
         themeProvider.currentTheme.extension<PurpleThemeExtension>();
     return Stack(
       children: [
-        CarsListWidget(ads: _ads, scrollController: _scrollController),
+        RefreshIndicator(
+            onRefresh: _refreshAdsList,
+            color: theme?.refreshIndicatorColor,
+            strokeWidth: 3.0,
+            child: CarsListWidget(ads: _ads, scrollController: _scrollController),
+        ),
         if (_isLoading)
           Center(
             child: SizedBox(

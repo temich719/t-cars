@@ -26,6 +26,7 @@ final purpleTheme = basicTheme.copyWith(
       scaffoldBackgroundColor: Color(0xD1E5A0EF),
       cardColor: Colors.white,
       circleIndicatorColor: Colors.white,
+      refreshIndicatorColor: Colors.deepPurple,
     ),
   ],
 );
@@ -53,6 +54,7 @@ final darkTheme = basicTheme.copyWith(
       cardColor: Colors.blueGrey,//todo
       changeableTextColor: Colors.white,
       circleIndicatorColor: Colors.blueGrey,
+      refreshIndicatorColor: Colors.blueGrey,
     ),
   ],
 );

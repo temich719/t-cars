@@ -28,6 +28,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     required this.cardColor,
     this.changeableTextColor,
     required this.circleIndicatorColor,
+    required this.refreshIndicatorColor,
   });
 
   final Color whiteText;
@@ -52,6 +53,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
   final Color? cardColor;
   final Color? changeableTextColor;
   final Color? circleIndicatorColor;
+  final Color? refreshIndicatorColor;
 
   @override
   ThemeExtension<PurpleThemeExtension> copyWith({Color? whiteText, Color? deepPurpleText,
@@ -64,7 +66,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     Color? dividerSingleCarColor, Color? scaffoldBackgroundColor,
     AppBarTheme? appBarTheme, BottomNavigationBarThemeData? bottomNavigationBarTheme,
     Color? blackText, Color? cardColor, Color? changeableTextColor,
-    Color? circleIndicatorColor,
+    Color? circleIndicatorColor, Color? refreshIndicatorColor,
   }) {
     return PurpleThemeExtension(
       whiteText: whiteText ?? this.whiteText,
@@ -89,6 +91,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       cardColor: cardColor ?? this.cardColor,
       changeableTextColor: changeableTextColor ?? this.changeableTextColor,
       circleIndicatorColor: circleIndicatorColor ?? this.circleIndicatorColor,
+      refreshIndicatorColor: refreshIndicatorColor ?? this.refreshIndicatorColor,
     );
   }
 
@@ -118,6 +121,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       cardColor: Color.lerp(cardColor, other.cardColor, t)!,
       changeableTextColor: Color.lerp(changeableTextColor, other.changeableTextColor, t)!,
       circleIndicatorColor: Color.lerp(circleIndicatorColor, other.circleIndicatorColor, t)!,
+      refreshIndicatorColor: Color.lerp(refreshIndicatorColor, other.refreshIndicatorColor, t)!,
     );
   }
 
