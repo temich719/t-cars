@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+//todo rename this
 class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
 
   PurpleThemeExtension({
@@ -26,6 +27,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     required this.blackText,
     required this.cardColor,
     this.changeableTextColor,
+    required this.circleIndicatorColor,
   });
 
   final Color whiteText;
@@ -49,6 +51,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
   final Color? blackText;
   final Color? cardColor;
   final Color? changeableTextColor;
+  final Color? circleIndicatorColor;
 
   @override
   ThemeExtension<PurpleThemeExtension> copyWith({Color? whiteText, Color? deepPurpleText,
@@ -61,6 +64,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
     Color? dividerSingleCarColor, Color? scaffoldBackgroundColor,
     AppBarTheme? appBarTheme, BottomNavigationBarThemeData? bottomNavigationBarTheme,
     Color? blackText, Color? cardColor, Color? changeableTextColor,
+    Color? circleIndicatorColor,
   }) {
     return PurpleThemeExtension(
       whiteText: whiteText ?? this.whiteText,
@@ -84,6 +88,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       blackText: blackText ?? this.blackText,
       cardColor: cardColor ?? this.cardColor,
       changeableTextColor: changeableTextColor ?? this.changeableTextColor,
+      circleIndicatorColor: circleIndicatorColor ?? this.circleIndicatorColor,
     );
   }
 
@@ -112,6 +117,7 @@ class PurpleThemeExtension extends ThemeExtension<PurpleThemeExtension> {
       blackText: Color.lerp(blackText, other.blackText, t)!,
       cardColor: Color.lerp(cardColor, other.cardColor, t)!,
       changeableTextColor: Color.lerp(changeableTextColor, other.changeableTextColor, t)!,
+      circleIndicatorColor: Color.lerp(circleIndicatorColor, other.circleIndicatorColor, t)!,
     );
   }
 
